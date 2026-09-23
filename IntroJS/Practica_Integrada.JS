@@ -1,4 +1,4 @@
-const productos = [];
+productos = [];
 pedidos = [];
 contador = 0;
 numeroPedido = 0;
@@ -35,17 +35,17 @@ function listarProductos() {
  }
 
 function crearpedido() {
-  pedido = "2 unidades de Tomate, 1 unidad de Pollo y 3 unidades de Leche";
+  pedido = prompt("Ingrese el contenido del pedido: ");
   pedidos[numeroPedido] = pedido;
   console.log(`Contenido del pedido: ${pedido}`);
   numeroPedido += 1;
 }
 
-agregarProducto("Tomate", 25, 10);
-agregarProducto("Papa", 30, 15);
-agregarProducto("Pollo", 85, 8);
-agregarProducto("Arroz", 20, 12);
-agregarProducto("Leche", 8, 30);
+agregarProducto("capuchino", 25, 10);
+agregarProducto("moka", 30, 15);
+agregarProducto("caramell", 85, 8);
+agregarProducto("descafeinado", 20, 12);
+agregarProducto("chocolate", 8, 30);
 
 
   console.log("Opciones:");
@@ -53,9 +53,24 @@ agregarProducto("Leche", 8, 30);
   console.log("2. Crear pedido");
   console.log("3. Listar pedidos");
 
-  listarProductos();
-  crearpedido();
-  console.log("Lista de pedidos:"); 
-  for (let i = 0; i < pedidos.length; i++) {
-    console.log(`Pedido ${i + 1}: ${pedidos[i]}`);
-  }
+let eleccion = prompt("Elige una opción: ");
+
+switch (eleccion) {
+    case "1":
+        listarProductos();
+        break;
+    case "2":
+        crearpedido();
+        break;
+    case "3":
+    crearPedido();
+    crearPedido();
+        console.log("Lista de pedidos:");
+          for (let i = 0; i < pedidos.length; i++) {
+        console.log(`Pedido ${i + 1}: ${pedidos[i]}`);
+      }
+        break;
+    default:
+        console.log("Opción no válida");
+        break;
+}
