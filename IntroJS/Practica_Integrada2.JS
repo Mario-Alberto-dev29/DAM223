@@ -148,7 +148,7 @@ function iniciarPedido() {
 
     resumen += ""
     resumen += `\nSubtotal: $${subtotal.toFixed(2)}\n`;
-    resumen += `IVA: $${(ivaCalc - subtotal).toFixed(2)}\n`;
+    resumen += `IVA: $${(total - subtotal).toFixed(2)}\n`;
     resumen += `Total a pagar: $${total.toFixed(2)}\n`;
     resumen += ""
     resumen += "Gracias por tu compra, el pedido está en proceso!\n";
@@ -169,22 +169,12 @@ function monitorearpedido() {
 let intro = "Escribe el número de pedido que quieres monitorear"
 let eleccion = prompt(intro);
 let pedidoEncontrado = pedidos[eleccion];
-let estatus;
     if (!pedidoEncontrado) {
         alert(" ERROR");
     } else {
     setTimeout(() => {alert("Pedido recibido")}, 4000)
-    setTimeout(() => {alert("Procesando pedido")}, 8000)
-    setTimeout(() => {estatus = prepararPedido()}, 12000)
-    setTimeout(() => {
-    if (estatus === 1) {
-    pedidos[eleccion].estatus = "Finalizado"    
-    alert("El pedido esta listo");
-    } else {
-    pedidos[eleccion].estatus = "Cancelado"    
-    alert("El pedido fue cancelado");
-    }   
-    }, 60000)
+    setTimeout(() => {alert("Procesando pedido")}, 7000)
+    setTimeout(() => {prepararPedido(eleccion)}, 10000)
     }  
 }    
 
@@ -208,30 +198,13 @@ function postres() {
     alert(mensajePostres);
 }
 
-function procesarPedido(pedido, callback) {
-    let listo = confirm(" El pedido esta listo? \n Presiona Aceptar si esta listo,\nCancelar si no lo esta");
-    if (listo) {
-        callback(pedido, "listo");
-    } else {
-        alert("El pedido no esta listo");
-    }
-}
-
-function notificarCliente(pedido, estado) {
-    if (estado === "listo") {
-        alert("El pedido de " + pedido.producto.nombre + " esta listo");
-    } else {
-        alert("El pedido de " + pedido.producto.nombre + " fue cancelado");
-    }
-}
-
 function cocinandoPedido() {
     return new Promise((resolve, reject) => {
         alert("Preparando el Pedido...");
         setTimeout(function() {
             let resultado = Math.random();
             if (resultado > 0.6) {
-                resolve("El pedido está listo");
+                resolve("El pedido está listo. Se está empacando");
             } else {
                 reject(" UPS! problemas en cocina \n No saldra el Pedido");
             }
@@ -253,7 +226,7 @@ function revisarIngredientes() {
     });
 }
 
-function prepararPedido() {
+function prepararPedido(eleccion) {
     revisarIngredientes()
         .then(function(mensaje) {
             alert(mensaje);
@@ -261,11 +234,13 @@ function prepararPedido() {
         })
         .then(function(mensaje){
             alert(" :D "+mensaje);
-        return 1;
+            pedidos[eleccion].estatus = "Finalizado con éxito"    
+            alert("El pedido ha sido entregado")
         })
         .catch(function(error){
             alert(" :C "+error);
-        return 0;
+            pedidos[eleccion].estatus = "Cancelado"    
+            alert("El pedido ha sido cancelado")        
         });
     }
 
