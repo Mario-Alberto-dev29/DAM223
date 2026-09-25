@@ -25,7 +25,7 @@ let orden = (productos.sort(function (a, b){
 }))
 let listaProductos = "";
     for (let i = 0; i < orden.length; i++) {
-        let p = promo[i];
+        let p = orden[i];
         listaProductos += p.id + ". " + p.nombre + " - $" + p.precio + " (Disponibles: " + p.cantidad + ")\n";
     }
     alert(listaProductos);
@@ -37,7 +37,7 @@ let orden = (productos.sort(function (a, b){
 }))
 let listaProductos = "";
     for (let i = 0; i < orden.length; i++) {
-        let p = promo[i];
+        let p = orden[i];
         listaProductos += p.id + ". " + p.nombre + " - $" + p.precio + " (Disponibles: " + p.cantidad + ")\n";
     }
     alert(listaProductos);
@@ -120,7 +120,7 @@ function iniciarPedido() {
     }
 
     productoEncontrado.cantidad -= cantidad;
-    pedidos.push({ producto: productoEncontrado, precio: productoEncontrado.precio, cantidad: cantidad });
+    pedidos.push({ producto: productoEncontrado, precio: productoEncontrado.precio, cantidad: cantidad, estatus: "Pedido Recibido" });
 
     alert("Producto agregado al pedido: " + productoEncontrado.nombre + " - Cantidad: " + cantidad);    
 
@@ -151,7 +151,7 @@ function iniciarPedido() {
     resumen += `IVA: $${(ivaCalc - subtotal).toFixed(2)}\n`;
     resumen += `Total a pagar: $${total.toFixed(2)}\n`;
     resumen += ""
-    resumen += "Gracias por tu compra, vuelve pronto!\n";
+    resumen += "Gracias por tu compra, el pedido está en proceso!\n";
 
     alert(resumen);
 
@@ -160,10 +160,33 @@ function iniciarPedido() {
 function listarpedidos() {
  for (let i = 0; i < pedidos.length; i++) {
  const pedido = pedidos[i];
- let mensaje = "Producto: " + pedido.producto.nombre + " Precio: " + pedido.precio + " Cantidad: " + pedido.cantidad
+ let mensaje = "Producto: " + pedido.producto.nombre + " Precio: " + pedido.precio + " Cantidad: " + pedido.cantidad + " Estatus: " + pedido.estatus
  alert(mensaje);
  }
 }
+
+function monitorearpedido() {
+let intro = "Escribe el número de pedido que quieres monitorear"
+let eleccion = prompt(intro);
+let pedidoEncontrado = pedidos[eleccion];
+let estatus;
+    if (!pedidoEncontrado) {
+        alert(" ERROR");
+    } else {
+    setTimeout(() => {alert("Pedido recibido")}, 4000)
+    setTimeout(() => {alert("Procesando pedido")}, 8000)
+    setTimeout(() => {estatus = prepararPedido()}, 12000)
+    setTimeout(() => {
+    if (estatus === 1) {
+    pedidos[eleccion].estatus = "Finalizado"    
+    alert("El pedido esta listo");
+    } else {
+    pedidos[eleccion].estatus = "Cancelado"    
+    alert("El pedido fue cancelado");
+    }   
+    }, 60000)
+    }  
+}    
 
 function bebidas() {
     let listaBebidas = productos.filter(producto => producto.categoria === "bebida");
@@ -184,5 +207,66 @@ function postres() {
     });
     alert(mensajePostres);
 }
+
+function procesarPedido(pedido, callback) {
+    let listo = confirm(" El pedido esta listo? \n Presiona Aceptar si esta listo,\nCancelar si no lo esta");
+    if (listo) {
+        callback(pedido, "listo");
+    } else {
+        alert("El pedido no esta listo");
+    }
+}
+
+function notificarCliente(pedido, estado) {
+    if (estado === "listo") {
+        alert("El pedido de " + pedido.producto.nombre + " esta listo");
+    } else {
+        alert("El pedido de " + pedido.producto.nombre + " fue cancelado");
+    }
+}
+
+function cocinandoPedido() {
+    return new Promise((resolve, reject) => {
+        alert("Preparando el Pedido...");
+        setTimeout(function() {
+            let resultado = Math.random();
+            if (resultado > 0.6) {
+                resolve("El pedido está listo");
+            } else {
+                reject(" UPS! problemas en cocina \n No saldra el Pedido");
+            }
+        }, 3000);
+    });
+}
+
+function revisarIngredientes() {
+    return new Promise((resolve, reject) => {
+        alert("Revisando los ingredientes...");
+        setTimeout(function() {
+            let ingredientesDisponibles = Math.random();
+            if (ingredientesDisponibles > 0.4) {
+                resolve("Los ingredientes están disponibles");
+            } else {
+                reject("Los ingredientes no están disponibles");
+            }
+        }, 2000);
+    });
+}
+
+function prepararPedido() {
+    revisarIngredientes()
+        .then(function(mensaje) {
+            alert(mensaje);
+            return cocinandoPedido();
+        })
+        .then(function(mensaje){
+            alert(" :D "+mensaje);
+        return 1;
+        })
+        .catch(function(error){
+            alert(" :C "+error);
+        return 0;
+        });
+    }
 
 
