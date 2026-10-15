@@ -20,7 +20,12 @@ export default function App() {
       <Saludo></Saludo>
       <Saludo/>
       <Saludo2></Saludo2>
-      <ComponenteExtra/>
+      <ComponenteExtra 
+      nombre="Mario Alberto Márquez Carmona" 
+      carrera="Ingeniería en tecnologías de la información e innovación digital" 
+      materia="Desarrollo de aplicaciones móviles" 
+      cuatri="4">        
+      </ComponenteExtra>
       <StatusBar style="auto" />
     </View>
   );

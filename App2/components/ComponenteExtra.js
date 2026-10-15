@@ -1,12 +1,19 @@
-import {View, Text} from "react-native";
+import {View, Button, Text} from "react-native";
+import { useState } from "react";
 
-export const ComponenteExtra = ()=>{
+export const ComponenteExtra = ({nombre, carrera, materia, cuatri})=>{
+const[mostrar, setMostrar] = useState(false);
 return (
 <View>
-<Text> Nombre: Mario Alberto Márquez Carmona </Text>    
-<Text> Carrera: Ingeniería en tecnologías de la información e innovación digital </Text>    
-<Text> Materia: Desarrollo de aplicaciones móviles </Text>    
-<Text> Número de cuatrimestre: 4 </Text>    
+<Text> Nombre: {nombre} </Text>  
+{ mostrar && 
+<>  
+<Text> Carrera: {carrera} </Text>    
+<Text> Materia: {materia} </Text>    
+<Text> Número de cuatrimestre: {cuatri} </Text>    
+</>
+}
+<Button title="ver perfil" onPress={ () => setMostrar(!mostrar) }></Button>
 </View>
 )
 }
