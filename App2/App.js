@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Image } from 'react-native';
 import {Saludo} from './components/Saludo' 
 import {Saludo2} from './components/Saludo2' 
+import {ComponenteExtra} from './components/ComponenteExtra' 
 
 /*
 2. Zona Main (componentes o screens)
@@ -19,6 +20,7 @@ export default function App() {
       <Saludo></Saludo>
       <Saludo/>
       <Saludo2></Saludo2>
+      <ComponenteExtra/>
       <StatusBar style="auto" />
     </View>
   );
