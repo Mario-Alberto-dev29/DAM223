@@ -15,16 +15,26 @@ import {ComponenteExtra} from './components/ComponenteExtra'
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hola Mundo React Native</Text>
-      <Image source={require('./assets/wave.png')}></Image>
-      <Saludo></Saludo>
-      <Saludo/>
-      <Saludo2></Saludo2>
       <ComponenteExtra 
       nombre="Mario Alberto Márquez Carmona" 
       carrera="Ingeniería en tecnologías de la información e innovación digital" 
       materia="Desarrollo de aplicaciones móviles" 
-      cuatri="4">        
+      cuatri="4"
+      style={styles.tarjeta1}>        
+      </ComponenteExtra>
+      <ComponenteExtra 
+      nombre="Antonio Mendoza" 
+      carrera="Licenciatura en filosofía y letras" 
+      materia="Historia universal 1" 
+      cuatri="1"
+      style={styles.tarjeta2}>        
+      </ComponenteExtra>
+      <ComponenteExtra 
+      nombre="Carmen Martínez" 
+      carrera="Licenciatura en matemáticas aplicadas" 
+      materia="Calculo vectorial" 
+      cuatri="3"
+      style={styles.tarjeta3}>        
       </ComponenteExtra>
       <StatusBar style="auto" />
     </View>
@@ -39,7 +49,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evently',
   },
+  tarjeta1: {backgroundColor: 'pink'},
+  tarjeta2: {backgroundColor: 'orange'},
+  tarjeta3: {backgroundColor: 'green'}
 });
