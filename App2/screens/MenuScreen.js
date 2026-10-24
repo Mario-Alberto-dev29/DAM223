@@ -43,11 +43,11 @@ export default function MenuScreen() {
     <Button title="Practica Tarjetas" onPress={()=>setScreen('tarjetas')}></Button>
     <Button title="Practica SafeAreaView" onPress={()=>setScreen('safe')}></Button>
     <Button title="Practica Pressable" onPress={()=>setScreen('press')}></Button>
-    <Button title="Practica Tarjetas" onPress={()=>setScreen('text')}></Button>
-    <Button title="Practica SafeAreaView" onPress={()=>setScreen('flat')}></Button>
-    <Button title="Practica Pressable" onPress={()=>setScreen('image')}></Button>
-    <Button title="Practica SafeAreaView" onPress={()=>setScreen('modal')}></Button>
-    <Button title="Practica Pressable" onPress={()=>setScreen('activity')}></Button>
+    <Button title="Practica TextImput" onPress={()=>setScreen('text')}></Button>
+    <Button title="Practica FlatList" onPress={()=>setScreen('flat')}></Button>
+    <Button title="Practica Image Background" onPress={()=>setScreen('image')}></Button>
+    <Button title="Practica Modal" onPress={()=>setScreen('modal')}></Button>
+    <Button title="Practica ActivityIndicator" onPress={()=>setScreen('activity')}></Button>
     </View>
   );
 }
