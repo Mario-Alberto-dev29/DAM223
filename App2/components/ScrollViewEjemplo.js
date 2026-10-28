@@ -1,14 +1,14 @@
 import {useState} from 'react'
-import { StyleSheet, Text, View, button, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView} from 'react-native';
 
 export default function ScrollViewEjemplo(){
     const [desplazar,setDesplazar] = useState(true);
     return(
     <View style={styles.container}>
     <Text style={styles.titulo}>Ejemplo</Text>
-    <button
+    <Button
     titule = {desplazar ? 'desactivar desplazamiento': 'activar desplazamieinto'}
-    onPress={()=>setDesplazar}></button>
+    onPress={()=>setDesplazar}></Button>
     <ScrollView
     style={styles.lista}
     contentContainerStyle={styles.contenido}
@@ -38,7 +38,7 @@ export default function ScrollViewEjemplo(){
 const styles = StyleSheet.create({
 container:{
 padding: 10,
-backgroundColor: blue    
+backgroundColor: 'blue',    
 },
 titulo: {
 fontSize: 20,
