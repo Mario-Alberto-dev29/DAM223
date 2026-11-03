@@ -30,7 +30,7 @@ if (faltantes.length > 0){
 Alert.alert('Campos incompletos', 'Favor de llenar todos los campos: ' + faltantes.join(', '))
 } else {
 if (isNaN(semestre) || semestre < 1 || semestre > 10){
-Alert.alert('Error', 'El semestre debe estar entre 1 y 10')
+Alert.alert('Error', 'El semestre debe ser un número entre 1 y 10')
 } else {
 Alert.alert('Registro enviado', 
 'Nombre: ' + nombre + '\n' +
