@@ -3,6 +3,7 @@
 */
 import {StyleSheet, Text, View, Image, TextInput, Alert, Platform, Button} from 'react-native';
 import {useState} from 'react';
+
 /*
 2. Zona Main (componentes o screens)
 */
