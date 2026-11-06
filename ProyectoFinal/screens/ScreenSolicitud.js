@@ -1,14 +1,77 @@
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button} from 'react-native';
-
+import { StyleSheet, Text, View, Alert } from 'react-native';
+import * as React from 'react';
+import { Avatar, DataTable } from 'react-native-paper';
+import AvatarProfile from '../components/avatar';
+import { Icon, Card } from 'react-native-paper';
 export default function App() {
+   const [page, setPage] = React.useState<number>(0);
+  const [numberOfItemsPerPageList] = React.useState([2, 3, 4]);
+  const [itemsPerPage, onItemsPerPageChange] = React.useState(
+    numberOfItemsPerPageList[0]
+  );
+
+  const [items] = React.useState([
+   {
+     key: 1,
+     Dato: 'Cupcake',
+     Valor: 'Pendiente',
+   },
+   {
+     key: 2,
+     Dato: 'Fecha',
+     Valor: '04/10/2026',
+   },
+   {
+     key: 3,
+     Dato: 'Hora',
+     Valor: '11:42 - 1:00',
+   },
+   {
+     key: 4,
+     Dato: 'Mensaje',
+     Valor: 'Quiero tomar el servicio',
+   },
+  ]);
+
+  const from = page * itemsPerPage;
+  const to = Math.min((page + 1) * itemsPerPage, items.length);
+
+  React.useEffect(() => {
+    setPage(0);
+  }, [itemsPerPage]);
+
   return (
     <View style={styles.container}>
+      <avatar></avatar>
+      <Text>Ramiro Ramirez</Text>
       <View>    
-      <Text>Estado</Text>
-      <Text>Fecha</Text>
-      <Text>Hora</Text>
-      <Text>Mensaje</Text>   
+      <DataTable>
+      <DataTable.Header>
+        <DataTable.Title>Dato</DataTable.Title>
+        <DataTable.Title>Valor</DataTable.Title>
+      </DataTable.Header>
+
+      {items.slice(from, to).map((item) => (
+        <DataTable.Row key={item.key}>
+          <DataTable.Cell>{item.Dato}</DataTable.Cell>
+          <DataTable.Cell>{item.Valor}</DataTable.Cell>
+        </DataTable.Row>
+      ))}
+
+      <DataTable.Pagination
+        page={page}
+        numberOfPages={Math.ceil(items.length / itemsPerPage)}
+        onPageChange={(page) => setPage(page)}
+        label={`${from + 1}-${to} of ${items.length}`}
+        numberOfItemsPerPageList={numberOfItemsPerPageList}
+        numberOfItemsPerPage={itemsPerPage}
+        onItemsPerPageChange={onItemsPerPageChange}
+        showFastPaginationControls
+        selectPageDropdownLabel={'Rows per page'}
+      />
+    </DataTable>
       </View>
       <Text>Aceptar solicitud?</Text>   
       <Button title='Aceptar' onPress={iniciarSesion()}></Button>  

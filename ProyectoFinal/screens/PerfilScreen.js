@@ -1,19 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button} from 'react-native';
+import { Icon, Card, MD3Colors} from 'react-native-paper';
+import AvatarProfile from '../components/avatar';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <AvatarProfile></AvatarProfile>      
       <Text>Juan Ramírez</Text>
-      <Text>4.2 Estrellas</Text>
+      <Icon
+      source="star"
+      color={MD3Colors.error50}
+      size={20}
+      />    
+      <Text>4.2</Text>
       <Text>12 Servicios</Text>
-
-      <View>    
-      <Text>Mis habilidades</Text>
-      <Text>Programación</Text>
-      <Text>Matemáticas</Text>   
-      <Text>Física Cuántica</Text>
-      <Text>Algebra Lineal</Text>   
+      <View>  
+            <Card>
+      <Card.Content>
+      <Text variant="titleLarge">
+      Mis habilidades
+      </Text>
+      <Text variant="bodyMedium">
+      Programacion
+      </Text>
+      <Text variant="bodyMedium">
+      Matematicas
+      </Text>
+     <Text variant="bodyMedium">
+      Fisica Cuantica
+      </Text>
+      <Text variant="bodyMedium">
+      Algebra lineal
+      </Text>
+      </Card.Content>
+      </Card>   
       </View>
       <View>    
       <Text>Información</Text>

@@ -4,8 +4,16 @@ import { StyleSheet, Text, View, Button} from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Vaictam</Text>
-      <Text>Banco de Tiempo y Talento</Text>
+      <Card>
+      <Card.Content>
+      <Text variant="titleLarge">
+      Vaictam
+      </Text>
+      <Text variant="bodyMedium">
+      Banco de tiempo y talentp
+      </Text>
+      </Card.Content>
+      </Card>  
       <Button title='Iniciar Sesion' onPress={iniciarSesion()}></Button>  
       <StatusBar style="auto" />
     </View>
