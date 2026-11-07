@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { Icon, Card, MD3Colors} from 'react-native-paper';
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
       </Text>
       </Card.Content>
       </Card>  
-      <Button title='Iniciar Sesion' onPress={iniciarSesion()}></Button>  
+      <Button title='Iniciar Sesion'></Button>  
       <StatusBar style="auto" />
     </View>
   );

@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import { Icon, Card, Searchbar, MD3Colors} from 'react-native-paper';
-import {avatar} from '../components/avatar' 
+import AvatarProfile from '../components/avatar';
 import * as React from 'react';
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
   const [text, setText] = React.useState("");
   return (
     <View style={styles.container}>
-      <avatar></avatar>
+      <AvatarProfile></AvatarProfile>
       <Text>Juan Ramírez</Text>
       <Icon
       source="star"
@@ -49,7 +49,7 @@ export default function App() {
       </Text>
       <Card>
       <Card.Content>
-      <avatar></avatar>
+      <AvatarProfile></AvatarProfile>
       <Text variant="titleLarge">
       Juan Abdul
       </Text>

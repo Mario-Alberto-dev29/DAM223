@@ -1,3 +1,4 @@
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
 import {
   View,
@@ -8,13 +9,14 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-// IMPORTACIÓN DE PANTALLAS
+// IMPORTACIÓN DE PANTALLAS (Sin InicioScreen)
 import InicialScreen from './screens/InicialScreen';
 import PerfilScreen from './screens/PerfilScreen';
 import ServiciosScreen from './screens/serviciosScreen';
 import TransaccionesScreen from './screens/transaccionesScreen';
 import UsuarioScreen from './screens/usuarioScreen';
 import CalificarScreen from './screens/calificarScreen';
+import ScreenSolicitud from './screens/ScreenSolicitud';
 
 export default function App() {
   const [pantalla, setPantalla] = useState('menu');
@@ -30,6 +32,7 @@ export default function App() {
     { nombre: 'Transacciones', componente: TransaccionesScreen },
     { nombre: 'Usuario', componente: UsuarioScreen },
     { nombre: 'Calificar', componente: CalificarScreen },
+    { nombre: 'Solicitud', componente: ScreenSolicitud },
   ];
 
   const seleccionada = botones.find(
@@ -37,6 +40,8 @@ export default function App() {
   );
 
   return (
+        <SafeAreaProvider>
+      {/* TODO EL CONTENIDO DE TU APLICACIÓN */}
     <View style={styles.container}>
       <StatusBar style="dark" />
 
@@ -80,6 +85,8 @@ export default function App() {
         </View>
       )}
     </View>
+        </SafeAreaProvider>
+
   );
 }
 

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import * as React from 'react';
-import { Avatar, DataTable } from 'react-native-paper';
+import {DataTable } from 'react-native-paper';
 import AvatarProfile from '../components/avatar';
-import { Icon, Card } from 'react-native-paper';
-export default function App() {
-   const [page, setPage] = React.useState<number>(0);
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+export default function ScreenSolicitud() {
+  const [page, setPage] = React.useState(0);
   const [numberOfItemsPerPageList] = React.useState([2, 3, 4]);
   const [itemsPerPage, onItemsPerPageChange] = React.useState(
     numberOfItemsPerPageList[0]
@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <avatar></avatar>
+      <AvatarProfile></AvatarProfile>
       <Text>Ramiro Ramirez</Text>
       <View>    
       <DataTable>
@@ -74,9 +74,9 @@ export default function App() {
     </DataTable>
       </View>
       <Text>Aceptar solicitud?</Text>   
-      <Button title='Aceptar' onPress={iniciarSesion()}></Button>  
-      <Button title='Rechazar' onPress={iniciarSesion()}></Button>  
-      <Button title='Cancelar' onPress={IniciarSesion()}></Button>  
+      <Button title='Aceptar'></Button>  
+      <Button title='Rechazar'></Button>  
+      <Button title='Cancelar'></Button>  
       <StatusBar style="auto" />
     </View>
 );
