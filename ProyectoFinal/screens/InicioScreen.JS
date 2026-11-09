@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { Icon, Card, MD3Colors} from 'react-native-paper';
 
-export default function App() {
+export default function InicioScreen() {
   return (
     <View style={styles.container}>
       <Card>
