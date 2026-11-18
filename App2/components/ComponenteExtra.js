@@ -1,6 +1,6 @@
 import {View, Button, Text, StyleSheet} from "react-native";
 import { useState } from "react";
-
+/* Comentario */
 export const ComponenteExtra = ({nombre, carrera, materia, cuatri, style})=>{
 const[mostrar, setMostrar] = useState(false);
 return (
