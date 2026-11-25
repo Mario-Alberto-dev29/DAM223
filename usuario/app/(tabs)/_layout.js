@@ -1,0 +1,20 @@
+import { Tabs } from "expo-router";
+
+export default function TabsLayout(){
+    return (
+    <Tabs>
+        <Tabs.Screen
+        name="index"
+        options={{title:"Inicio", href:null}}>
+        </Tabs.Screen>
+        <Tabs.Screen
+        name="alta"
+        options={{title:"formulario"}}>
+        </Tabs.Screen>
+        <Tabs.Screen
+        name="consulta"
+        options={{title:"listado"}}>
+        </Tabs.Screen>
+    </Tabs>
+    )
+}
